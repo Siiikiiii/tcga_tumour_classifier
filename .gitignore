@@ -1,0 +1,16 @@
+# Data: too large for GitHub; document where to download it in README.md
+data/
+
+# Generated files
+models/
+logs/
+reports/figures/
+
+# Python and environment files
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Mac system files
+.DS_Store
