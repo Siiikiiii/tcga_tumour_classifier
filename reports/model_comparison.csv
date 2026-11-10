@@ -1,0 +1,8 @@
+,Random Forest,Neural Network
+cv_macro_f1,0.999,1.0
+test_macro_f1,0.992,1.0
+test_micro_f1,0.994,1.0
+low_confidence,3.0,1.0
+misclassified,1.0,0.0
+grid_search_time_s,16.906,21.605
+file_size_mb,0.949,0.784

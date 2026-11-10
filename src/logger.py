@@ -1,4 +1,3 @@
-ger · PY
 # logger.py
 """
 Applies the logging configuration defined in settings.LOGGING_CONFIG.
