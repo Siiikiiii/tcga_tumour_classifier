@@ -33,8 +33,7 @@ from sklearn.preprocessing import StandardScaler
 from src.logger import setup_logging
 from src.settings import (CLASS_NAMES, CONFIDENCE_THRESHOLD, CV_FOLDS, DATA_FILE, FIGURES_DIR,
                           LABELS_FILE, MODEL_DIR, N_COMPONENTS, N_GENES, RANDOM_STATE,
-                          REPORTS_DIR, TEST_SIZE)
-
+                          REPORTS_DIR, TEST_SIZE, EXAMPLES_FILE, N_EXAMPLES)
 logger = logging.getLogger(__name__)
 
 
@@ -140,7 +139,11 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=TEST_SIZE, stratify=y, random_state=RANDOM_STATE)
     logger.info("Train: %d samples | Test: %d samples", len(X_train), len(X_test))
-
+    EXAMPLES_FILE.parent.mkdir(parents=True, exist_ok=True)
+    examples = X_test.groupby(y_test, group_keys=False).head(N_EXAMPLES // len(CLASS_NAMES))
+    pd.concat([examples, y_test[examples.index]], axis=1).to_csv(EXAMPLES_FILE)   # genes + Class column
+    logger.info("Saved %d example test patients to %s", len(examples), EXAMPLES_FILE)
+    
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
 

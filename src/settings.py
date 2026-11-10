@@ -133,11 +133,22 @@ CV_FOLDS = 5               # k for k-fold cross-validation
 N_COMPONENTS = 4                # PCA: number of panel components to keep
 N_GENES = 200                     # number of top genes to select for the panel
 
+# Model files
+MODEL_FILES = {
+    "Random Forest": MODEL_DIR / "random_forest.joblib",
+    "Neural Network": MODEL_DIR / "neural_network.joblib",
+}
+EXPRESSION_RANGE = (0.0, 30.0)
+
 # The five tumour types (labels.csv), in a fixed order for reports and plots
 CLASS_NAMES = ["BRCA", "COAD", "KIRC", "LUAD", "PRAD"]
 
 # Number of top driving genes to show for each patient's prediction
 TOP_N_GENES = 10
+
+# Example patients
+EXAMPLES_FILE = DATA_DIR / "sample" / "example_patients.csv"
+N_EXAMPLES = 10
 
 # Presentation question 4: if the highest class probability is below this,
 # the prediction is flagged as low confidence instead of being reported as
